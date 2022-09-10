@@ -33,8 +33,8 @@ const productSchema = new mongoose.Schema(
             default: 0
         },
         photo: {
-            data: Buffer,
-            contentType: String
+            type: String,
+            required: true,
         },
         shipping: {
             required: false,

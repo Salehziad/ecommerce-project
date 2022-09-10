@@ -1,0 +1,94 @@
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  margin-bottom: 20px;
+  color: white;
+}
+.navbar-container .navbar-header-top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 10px 0 0;
+  z-index: 5;
+}
+.navbar-container .navbar-header-top button {
+  background-color: black;
+  border-radius: 3px;
+  border-color: darkgrey;
+  width: 68px;
+  height: 32px;
+}
+.navbar-container .navbar-header-top button a {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  text-decoration: none;
+}
+.navbar-container .navbar-header-top button a img {
+  width: 27px;
+  height: 27px;
+  padding-left: 5px;
+}
+.navbar-container .navbar-header-top button a p {
+  padding-top: 6px;
+  font-size: 14px;
+}
+.navbar-container .navbar-header-top .nav-items {
+  list-style-type: none;
+  margin: 6px 15px 0 5px;
+}
+.navbar-container .navbar-header-top .nav-items a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+.navbar-container .navbar-header-top .nav-items:hover {
+  border-bottom: 2px solid rgb(255, 102, 7);
+}
+.navbar-container .navbar-header-top span {
+  padding-right: 8px;
+  padding-top: 4px;
+}
+.navbar-container .navbar-header-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap;
+  margin-top: -20px;
+  margin-bottom: 10px;
+}
+.navbar-container .navbar-header-bottom .left-box .nav-logo-header {
+  font-size: 30px;
+  font-size: 40px;
+  padding-left: 15px;
+  list-style-type: none;
+}
+.navbar-container .navbar-header-bottom .left-box .nav-logo-header a {
+  text-decoration: none;
+  color: white;
+}
+.navbar-container .navbar-header-bottom .middle-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-top: 4px;
+  font-size: 20px;
+}
+.navbar-container .navbar-header-bottom .middle-box .nav-items {
+  list-style-type: none;
+  margin-top: 16px;
+  margin-left: 10px;
+}
+.navbar-container .navbar-header-bottom .middle-box .nav-items a {
+  text-decoration: none;
+  color: white;
+}
+.navbar-container .navbar-header-bottom .middle-box .nav-items:hover {
+  border-bottom: 2px solid red;
+}
+.navbar-container .navbar-header-bottom .right-box {
+  margin-left: auto;
+  background-color: red;
+  width: 200px;
+}/*# sourceMappingURL=Menu.css.map */

@@ -19,7 +19,7 @@ exports.productById = (req, res, next, id) => {
 };
 
 exports.read = (req, res) => {
-    req.product.photo = undefined;
+    // req.product.photo = undefined;
     return res.json(req.product);
 };
 
@@ -43,19 +43,6 @@ exports.create = (req, res) => {
 
         let product = new Product(fields);
 
-        // 1kb = 1000
-        // 1mb = 1000000
-
-        if (files.photo) {
-            // console.log("FILES PHOTO: ", files.photo);
-            if (files.photo.size > 1000000) {
-                return res.status(400).json({
-                    error: 'Image should be less than 1mb in size'
-                });
-            }
-            product.photo.data = fs.readFileSync(files.photo.path);
-            product.photo.contentType = files.photo.type;
-        }
 
         product.save((err, result) => {
             if (err) {
@@ -99,16 +86,7 @@ exports.update = (req, res) => {
         // 1kb = 1000
         // 1mb = 1000000
 
-        if (files.photo) {
-            // console.log("FILES PHOTO: ", files.photo);
-            if (files.photo.size > 1000000) {
-                return res.status(400).json({
-                    error: 'Image should be less than 1mb in size'
-                });
-            }
-            product.photo.data = fs.readFileSync(files.photo.path);
-            product.photo.contentType = files.photo.type;
-        }
+
 
         product.save((err, result) => {
             if (err) {
@@ -134,7 +112,7 @@ exports.list = (req, res) => {
     let limit = req.query.limit ? parseInt(req.query.limit) : 6;
 
     Product.find()
-        .select('-photo')
+        .select()
         .populate('category')
         .sort([[sortBy, order]])
         .limit(limit)
@@ -214,7 +192,7 @@ exports.listBySearch = (req, res) => {
     }
 
     Product.find(findArgs)
-        .select('-photo')
+        // .select('-photo')
         .populate('category')
         .sort([[sortBy, order]])
         .skip(skip)
@@ -225,6 +203,7 @@ exports.listBySearch = (req, res) => {
                     error: 'Products not found'
                 });
             }
+            console.log(data);
             res.json({
                 size: data.length,
                 data
@@ -232,13 +211,13 @@ exports.listBySearch = (req, res) => {
         });
 };
 
-exports.photo = (req, res, next) => {
-    if (req.product.photo.data) {
-        res.set('Content-Type', req.product.photo.contentType);
-        return res.send(req.product.photo.data);
-    }
-    next();
-};
+// exports.photo = (req, res, next) => {
+//     if (req.product.photo.data) {
+//         res.set('Content-Type', req.product.photo.contentType);
+//         return res.send(req.product.photo.data);
+//     }
+//     next();
+// };
 
 exports.listSearch = (req, res) => {
     // create query object to hold search value and category value
@@ -259,7 +238,7 @@ exports.listSearch = (req, res) => {
                 });
             }
             res.json(products);
-        }).select('-photo');
+        })
     }
 };
 
